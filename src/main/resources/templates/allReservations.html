@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Liste des Voitures</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <div th:switch="${allReservations}" class="container my-5">
+                <p class="my-5">
+                    <a href="/addReservation" class="btn btn-primary">
+                        <i class="fas fa-user-plus ml-2">New book reservation </i></a>
+                </p>
+                <div class="col-md-10">
+                    <h2 th:case="null">No record found !!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Date de publication</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="book : ${allReservations}">
+                                <td th:text="${book.id}"></td>
+                                <td th:text="${book.title}"></td>
+                                <!--                                <td>-->
+                                <!--                                    <a th:href="@{/edit/{id}(id=${voiture.id})}"-->
+                                <!--                                       class="btn btn-primary">-->
+                                <!--                                        <i class="fas fa-user-edit ml-2"></i>-->
+                                <!--                                    </a>-->
+                                <!--                                </td>-->
+                                <!--                                <td>-->
+                                <!--                                    <a th:href="@{/delete/{id}(id=${voiture.id})}"-->
+                                <!--                                       class="btn btn-primary">-->
+                                <!--                                        <i class="fas fa-user-times ml-2"></i>-->
+                                <!--                                    </a>-->
+                                <!--                                </td>-->
+                                <td th:text="${book.author}"></td>
+                                <td th:text="${book.published}"></td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
